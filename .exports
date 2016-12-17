@@ -1,0 +1,12 @@
+# bash history: increase size
+export HISTSIZE="32768"
+export HISTFILESIZE="${HISTSIZE}";
+
+# bash history: omit duplicates and commands that begin with a space
+export HISTCONTROL="ignoreboth";
+
+# don't clear the screen after quitting a manpage
+export MANPAGER="less -X";
+
+# increase memory for maven
+export MAVEN_OPTS="-Xmx1024m -XX:MaxPermSize=512m";

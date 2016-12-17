@@ -1,0 +1,37 @@
+# detect which ls flavor is in use
+if ls --color > /dev/null 2>&1; then # GNU
+	colorflag="--color"
+else # OS X
+	colorflag="-G"
+fi
+
+# always use color output for ls
+alias ls="command ls ${colorflag}"
+
+# ip address
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+
+# print week number
+alias week="date +%V"
+
+# start local php webserver
+alias phpserver="php -S localhost:8000"
+
+# make grunt print stack traces by default
+command -v grunt > /dev/null && alias grunt="grunt --stack"
+
+# run mvn install with some flags to speed up
+alias mif="mvn install -DskipTests -DskipThemes -DskipZip -DskipRpm -Denforcer.skip=true -Dmdep.analyze.skip=true -T 2C -e"
+
+# recursively delete `.DS_Store` files
+alias cleanup_dsstore="find . -name '*.DS_Store' -type f -ls -delete"
+
+# flush dns cache
+alias flushdns="dscacheutil -flushcache;sudo killall -HUP mDNSResponder"
+
+# hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+
+# lock the screen
+alias afk="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
