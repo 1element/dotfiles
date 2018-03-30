@@ -17,6 +17,9 @@ alias week="date +%V"
 # start local php webserver
 alias phpserver="php -S localhost:8000"
 
+# start local php webserver for any interface
+alias phpserver_any="php -S 0.0.0.0:8000"
+
 # make grunt print stack traces by default
 command -v grunt > /dev/null && alias grunt="grunt --stack"
 
