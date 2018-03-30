@@ -26,6 +26,3 @@ fi;
 
 # add tab completion for `defaults read|write NSGlobalDomain`
 complete -W "NSGlobalDomain" defaults;
-
-# set jdk default path (see .functions)
-setjdk 1.7
