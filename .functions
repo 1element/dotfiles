@@ -14,3 +14,18 @@ function setjdk() {
 function removeFromPath() {
   export PATH=$(echo $PATH | sed -E -e "s;:$1;;" -e "s;$1:?;;")
 }
+
+function proxy_on() {
+  # assumes PROXY_SERVER is an existing environment variable
+  # pointing to your (corporate) proxy server
+  export {HTTP,HTTPS,FTP}_PROXY=$PROXY_SERVER
+  export {http,https,ftp}_proxy=$PROXY_SERVER
+  export {NO_PROXY,no_proxy}="localhost,127.0.0.1"
+  git config --global http.proxy $HTTP_PROXY
+}
+
+function proxy_off() {
+  unset {HTTP,HTTPS,FTP,NO}_PROXY
+  unset {http,https,ftp,no}_proxy
+  git config --global --unset http.proxy
+}
